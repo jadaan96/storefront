@@ -63,15 +63,15 @@ function Header(props) {
         {props.Cart.map((item) => (
           <ListItem key={item.id} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
+              <ListItemIcon >
                 <DeleteIcon
                   onClick={() => {
-                    props.CART_REMOVE(item.name);
+                    props.CART_REMOVE(item);
                   }}
                   style={{ cursor: "pointer", color: "tomato" }}
                 />
               </ListItemIcon>
-              <ListItemText primary={item.name} />
+              <ListItemText sx={{ width: "101px" }} primary={item.name} />
               <ListItemIcon>
                 <Button
                   onClick={() => handleQuantityChange(item._id, -1)}

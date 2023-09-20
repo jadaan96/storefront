@@ -1,4 +1,3 @@
-import axios from 'axios';
 const initialState = {
     category : [],
    totalVotes: 0,
@@ -12,6 +11,7 @@ const initialState = {
       
             case 'FIRST':
                 return { ...state, category: payload };
+                 
             case 'OFFICE':
             const filteredProducts = state.category.filter(product => product.category === payload);
             return { ...state, theProducts: filteredProducts };
@@ -33,3 +33,4 @@ const initialState = {
       payload: name,
     };
   };
+  

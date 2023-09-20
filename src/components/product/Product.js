@@ -25,7 +25,7 @@ function Product(props) {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [props.Cart]);
+  }, [props]);
 
   const { theProducts, category } = props.Product;
   let rederPrduct = [];
@@ -35,7 +35,7 @@ function Product(props) {
   } else {
     rederPrduct = theProducts;
   }
-
+  // console.log(rederPrduct);
   return (
     <div>
       <Container sx={{ py: 8 }} maxWidth="md">
@@ -51,18 +51,20 @@ function Product(props) {
               >
                 <CardMedia
                   component="div"
-                  sx={{
-                    // 16:9
-                    pt: "56.25%",
-                  }}
-                  image="https://source.unsplash.com/random?wallpapers"
-                />
+                 
+                >
+                  <img
+                    src={`https://source.unsplash.com/random?${card.name}`}
+                    alt={card.name}
+                  />
+                </CardMedia>
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography gutterBottom variant="h5" component="h2">
                     category: {card.category}
                   </Typography>
                   <Typography>product Name:{card.name}</Typography>
                   <Typography>price:{card.price}</Typography>
+                  <Typography>stock:{card.inStock}</Typography>
                 </CardContent>
                 <CardActions>
                   <Button
@@ -74,7 +76,8 @@ function Product(props) {
                         duration: 9000,
                         isClosable: true,
                       });
-                      props.CART(card); // Call the props.CART function here
+                      props.CART(card);
+                      // props.stock(card);
                     }}
                   >
                     Add To Cart
