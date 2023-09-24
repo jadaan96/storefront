@@ -1,0 +1,32 @@
+.details-dev{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    padding: 20px;
+    height: fit-content;
+    background-color: #a1b3bf;
+    border-radius: 20px;
+}
+.main-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 50px;
+}
+.DButton{
+    background-color: rgb(3,116,181)!important;
+    padding: 8px;
+    border-radius: 15px;
+}
+.related{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}

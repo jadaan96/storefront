@@ -1,0 +1,84 @@
+.card-container{
+    background-color: rgb(238, 233, 233);
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.imges{
+    width: 50px ;
+    height: 50px;
+    margin: 5px;
+}
+.card{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px;
+    align-items: center;
+    padding: 0px 8px;
+    background-color: rgb(250,250,250);
+    border-radius: 10px;
+}
+.theprice{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    height: 60px;
+    align-items: center;
+}
+.total{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+}
+.checkout-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.lower-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80%;
+    margin-top: 15px;
+    
+}
+.Billing-address{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+
+}
+.input-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+  gap: 10px;
+
+}
+.paymant-details{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.PAY-BUTTON{
+background-color: rgb(66,83,182);
+padding: 8px;
+border-radius: 15px;
+color: white;
+}
+.pay-input{
+    border: solid 2px gray;
+    border-radius: 15px;
+    padding-left: 5px;
+}

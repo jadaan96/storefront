@@ -19,9 +19,14 @@ import ListItemText from "@mui/material/ListItemText";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { CART_REMOVE } from "../../Store/Actions";
+import { CART_REMOVE } from "../../Store/cartReducer.store";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Header(props) {
+  const product = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   const [state, setState] = useState({
     top: false,
     left: false,
@@ -60,13 +65,13 @@ function Header(props) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {props.Cart.map((item) => (
+        {product.cart.cart.map((item) => (
           <ListItem key={item.id} disablePadding>
             <ListItemButton>
-              <ListItemIcon >
+              <ListItemIcon>
                 <DeleteIcon
                   onClick={() => {
-                    props.CART_REMOVE(item);
+                    dispatch(CART_REMOVE(item));
                   }}
                   style={{ cursor: "pointer", color: "tomato" }}
                 />
@@ -89,6 +94,9 @@ function Header(props) {
             </ListItemButton>
           </ListItem>
         ))}
+        <Link to={"/checkout"} >
+          <Button onClick={() => {}}>CheckOut</Button>
+        </Link>
       </List>
     </Box>
   );
@@ -115,7 +123,7 @@ function Header(props) {
             onClick={toggleDrawer("right", true)}
           />
           <Typography variant="h6" color="inherit" noWrap>
-            {props.Cart.length}
+            {product.cart.cart.length}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -130,10 +138,4 @@ function Header(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  Cart: state.cart.cart,
-});
-
-const mapDispatchToProps = { CART_REMOVE };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

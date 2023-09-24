@@ -1,11 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Button from '@mui/material/Button';
-import { office } from '../../Store/productReducer'; // Import the action creator
-
-function Hero(props) {
+import { useDispatch, useSelector } from 'react-redux'
+import { office } from '../../Store/productReducer.store';
+function Hero() {
+  const dispatch = useDispatch();
+  
   const handleButtonClick = (name) => {
-    props.office(name); 
+    dispatch(office(name)); 
   };
 
   return (
@@ -17,6 +18,5 @@ function Hero(props) {
   );
 }
 
-const mapDispatchToProps = { office };
 
-export default connect(null, mapDispatchToProps)(Hero);
+export default Hero;
