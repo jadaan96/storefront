@@ -7,27 +7,31 @@ import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { increment, office } from "../../Store/productReducer";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux'
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
-import { CART } from "../../Store/Actions";
-function Product(props) {
-  const toast = useToast();
+import {get}from "../../Store/productReducer.store"
+import {CART}from "../../Store/cartReducer.store"
+import { Link } from "react-router-dom";
 
+function Product() {
+  const dispatch = useDispatch();
+  const product = useSelector(state => state)
+  const toast = useToast();
   useEffect(() => {
     axios
-      .get(`https://api-js401.herokuapp.com/api/v1/products`)
-      .then((data) => {
-        props.increment(data.data.results);
-        // props.office("food")
-      })
+    .get(`https://api-js401.herokuapp.com/api/v1/products`)
+    .then((data) => {
+      dispatch(get(data.data.results));
+      // props.office("food")
+      console.log(product,"00000000000");
+    })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [props]);
-
-  const { theProducts, category } = props.Product;
+  }, [product.cart.cart]);
+console.log(product,"cart");
+  const { theProducts, category } = product.product;
   let rederPrduct = [];
 
   if (theProducts.length === 0) {
@@ -76,14 +80,14 @@ function Product(props) {
                         duration: 9000,
                         isClosable: true,
                       });
-                      props.CART(card);
+                      dispatch(CART(card));
                       // props.stock(card);
                     }}
                   >
                     Add To Cart
                   </Button>
 
-                  <Button size="small">Edit</Button>
+                <Link to={`product/${card._id}`}> <Button size="small" >Details</Button></Link>  
                 </CardActions>
               </Card>
             </Grid>
@@ -94,10 +98,6 @@ function Product(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  Product: state.product,
-  Cart: state.cart,
-});
-const mapDispatchToProps = { increment, office, CART };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+
+export default Product;
